@@ -1,0 +1,10 @@
+create trigger del_mus before delete on musician for each row
+delete from album where album.afmprod=old.afm;
+
+create trigger del_mus_alb before delete on album for each row
+delete from songs where albumid=old.albumid;
+
+create trigger del_mus_alb_song before delete on songs for each row
+delete from song_mus_org where songid=old.songid;
+
+create trigger ins_song AFTER INSERT ON songs FOR EACH ROW insert into song_mus_org values (NEW.songid,(SELECT CONCAT(name, ' ', surname) from musician WHERE afm IN(SELECT afmprod from album where album.albumid=NEW.albumid)),0);
