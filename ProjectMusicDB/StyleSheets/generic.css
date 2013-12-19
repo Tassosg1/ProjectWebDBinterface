@@ -1,13 +1,14 @@
 body
 {
-/*Template styles*/
+/*template styles*/
 	color: black;
-	text-shadow: 2px 2px 2px grey;
+	text-shadow: 2px 2px 2px gray;
 	text-transform:capitalize;
 	text-align: center;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-size: 100%;
 	background-color: white;
+	z-index: 0;
    
 /*proper positioning defaults*/
 	position: absolute;
@@ -27,28 +28,41 @@ body
 /*header menu styles*/
 header
 {
+	background-color: gray;
+	color: white;
+	position: fixed;
 	top: 0;
+	z-index: 1;
+}
+
+/*footer menu styles*/
+center
+{
+	position: static;
+	left: 0;
+	right: 0;
+	width: 100%;
+	margin-top: 1.5em;
 }
 
 /*footer menu styles*/
 footer
 {
-
-	position: fixed;
+	font-size: 0.6em;
+	position: static;
 	bottom: 0;
 }
 
 /*generic header and footer positioning*/
 header,footer
 {
-	background-color: Transparent;
 	width: 100%;
 }
 
-/*Element Positioning*/
+/*element positioning*/
 .Left,.Center,.Right
 {
-	padding: 0% 1%;
+	padding: 0% 0.5%;
 }
 
 .Left
@@ -63,4 +77,16 @@ header,footer
 .Right
 {
 	float: right;
+}
+
+/*blend-in*/
+a
+{
+	color: inherit;
+	text-decoration: inherit;
+}
+p
+{
+	margin: inherit;
+	padding: inherit;
 }
