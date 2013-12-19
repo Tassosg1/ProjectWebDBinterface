@@ -14,44 +14,37 @@
     <body>
 
 		<header>
-			<a  href="login.jsp" class="Right"> Are you a musician? Log in here! </a>
+			<a href="dummy.xhtml" class="Left">Browse</a>
+			<a  href="login.jsp" class="Right">Log In</a>
 		</header>
 
 		<center>
 			<form method="get" action="results.jsp">
-				<a href="advsearch.jsp">Advanced Search</a>
+				<label for="DateOfArrival">Date Of Arrival</label>
+				<input type="text" maxlength="50" required="required" autofocus="autofocus" id="DateOfArrival" name="DateOfArrival" />
 				<br />
-				<input type="text" autofocus="autofocus" required="required" size="50" name="query" />
+				<label for="ArrivalAirport">Arrival Airport</label>
+				<!--<input type="text" maxlength="50" required="required" id="ArrivalAirport" name="ArrivalAirport" />-->
+				<select id="ArrivalAirport" name="ArrivalAirport">
+					<option value="El. Venizel">El. Venizel</option>
+					<option value="Ellhniko">Ellhniko</option>
+				</select>
+				<hr />
+				<label for="DateOfDeparture">Date Of Departure</label>
+				<input type="text" maxlength="50" id="DateOfDeparture" name="DateOfDeparture" />
 				<br />
+				<label for="DepartureAirport">Departure Airport</label>
+				<!--<input type="text" maxlength="50" id="DepartureAirport" name="DepartureAirport" />-->
+				<select id="DepartureAirport" name="DepartureAirport">
+					<option value="El. Venizel">El. Venizel</option>
+					<option value="Ellhniko">Ellhniko</option>
+				</select>
+				<hr />
 				<input type="submit" value="Search" />
-				<br />
-				asdasdadsad
-				<br />
-				<br />
-				<br />
-				<br />
-				dasdadfsfgsfdfds
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				afasdafagasga
-				<br />
-				<br />
-				<br />
-				<br />
-				<br />
-				s'agapw S A G A P W
-				<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-				lol
 			</form>
 		</center>
 
 		<footer>
-			<p>sardam</p>
 		</footer>
 
 	</body>
