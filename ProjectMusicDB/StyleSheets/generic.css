@@ -25,62 +25,6 @@ body
 	height: 100%;
 }
 
-/*header menu styles*/
-header
-{
-	background-color: gray;
-	color: white;
-	position: fixed;
-	top: 0;
-	z-index: 1;
-}
-
-/*footer menu styles*/
-center
-{
-	position: static;
-	left: 0;
-	right: 0;
-	width: 100%;
-	margin-top: 1.5em;
-}
-
-/*footer menu styles*/
-footer
-{
-	background-color: black;
-	color: white;
-	font-size: 0.6em;
-	position: static;
-	bottom: 0;
-}
-
-/*generic header and footer positioning*/
-header,footer
-{
-	width: 100%;
-}
-
-/*element positioning*/
-.Left,.Center,.Right
-{
-	padding: 0% 0.5%;
-}
-
-.Left
-{
-	float: left;
-}
-
-.Center
-{
-}
-
-.Right
-{
-	float: right;
-}
-
 /*blend-in*/
 a
 {
