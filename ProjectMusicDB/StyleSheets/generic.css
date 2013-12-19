@@ -48,6 +48,8 @@ center
 /*footer menu styles*/
 footer
 {
+	background-color: black;
+	color: white;
 	font-size: 0.6em;
 	position: static;
 	bottom: 0;
