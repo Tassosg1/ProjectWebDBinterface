@@ -2,7 +2,7 @@
 header
 {
 	position: fixed;
-	background-color: transparent;
+	background-color: black;
 	color: white;
 	top: 0;
 	z-index: 1;
@@ -21,8 +21,8 @@ header
 footer
 {
 	position: fixed;
-	background-color: black;
-	color: white;
+	background-color: transparent;
+	color: black;
 	font-size: 0.6em;
 	bottom: 0;
 	z-index: 2;
