@@ -1,0 +1,26 @@
+Εταιρίες:
+
+Olympic Air afm:1
+Alitalia afm:2
+Paris International afm:3
+Berlin International afm:4
+Etheria Travels afm:5
+SpyroTravels afm:6
+
+Flights:
+
+Απο ελ.Βενιζέλος σε:
+Instanbul, 25/12 21:00, 6
+Vienna,	   25/12 22:00, 5
+Vienna,	   25/12 13:00, 1
+Vienna,	   27/12 22:00, 5
+Amsterdam, 25/12 22:30, 5
+Barcelona, 25/12 23:30, 1
+Paris,     25/12 12:30, 3
+Thessaloniki, 26/12 14:45, 1
+
+Απο Thessaloniki:
+El.Venizelos  25/12 16:45, 1
+Paris,	   25/12 17:45, 3
+Berlin,	   26/12 17:45, 4
+Amsterdam, 26/12 17:00, 5
