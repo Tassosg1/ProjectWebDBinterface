@@ -1,11 +1,11 @@
+<%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"  >
 
 	<head>
-        <title>Fly Me To The Moon - Index</title>
-		<link rel="stylesheet" type="text/css" href="./StyleSheets/generic.css" />
+        <title>Fly Me To The Moon - Verifying</title>
+                <link rel="stylesheet" type="text/css" href="./StyleSheets/generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
-		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
                 <!-- PLEASE mind the case-sensitivity (Glassfish©). Use the format recommended ^ -->
                 <!--<link rel="stylesheet" type="text/css" href="Stylesheets/index.css" />-->
 		<meta name="description" content="" />
@@ -14,26 +14,36 @@
 		<meta charset="utf-8" />
     </head>
 
-    <body>
+<script type="text/JavaScript">
+function timedRedirect() {
+	setTimeout("window.location=\"index.jsp\";",4000);
+}
+</script>
+    
+    <body onload="javascript:timedRedirect();">
 
 		<header>
 			<nav>
-				<span class="Left"><a href="index.xhtml">Home</a></span>
-				<span class="Right"><a href="login.jsp">Log In</a></span>
+				<span class="Left"><a href="index.jsp">Home</a></span>
 			</nav>
 		</header>
-
-		<!-- Here goes the Verify page. Is there a session? If yes, is there a credit card? If yes, checkout. If no, ask for one. If no, ask him to log in.
-                     As a reminder, the strings for getting data from MySQL database are (the database formed by the updated script):
-                     Class.forName("com.mysql.jdbc.Driver");
-                     String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                     Connection DBCon = DriverManager.getConnection(DBConStr);
-                     Statement airports = DBCon.createStatement();
-                     ResultSet rsairporst = albums.executeQuery("SELECT * from airport");
-                     From there on, several java functions (.first(),.next()) help you manage the results, and functions like (rsairport.getString("airport") to access them.
-                     ? ?????? ???? ?? ??????? ?????? ??????????? (??? ??? results), ??? ?? ??? ??????? ?? ???? ???? checkout.
-                -->
-                     
+<BR>
+<BR>		
+                <%
+                 Class.forName("com.mysql.jdbc.Driver");
+                 String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
+                 Connection DBCon = DriverManager.getConnection(DBConStr);
+                 Statement userstatement = DBCon.createStatement();
+                 ResultSet rsuser = userstatement.executeQuery("SELECT * from user WHERE username='" + request.getParameter("username") + "'");
+                 if(rsuser.first()) {
+                     if (request.getParameter("password").equals(rsuser.getString("password"))) {
+                         out.println("Login Successfull. You are now being redirected...");
+                         response.addCookie(new Cookie("username",request.getParameter("username")));
+                     } else out.println("Incorect Password.<BR>Please try again.");
+                 } else {
+                     out.println("This user ("+request.getParameter("username")+") does not exist.<BR> Please try again or contact the admin.");
+                 }
+                %>
         
 		<footer>
 			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>

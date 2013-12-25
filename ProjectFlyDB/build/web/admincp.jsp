@@ -18,7 +18,7 @@
 
 		<header>
 			<nav>
-				<span class="Left"><a href="index.xhtml">Home</a></span>
+				<span class="Left"><a href="index.jsp">Home</a></span>
 				<span class="Right"><a href="login.jsp">Log In</a></span>
 			</nav>
 		</header>
