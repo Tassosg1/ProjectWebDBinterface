@@ -46,25 +46,7 @@
 		<nav>
 			<span class="Left"><a href="index.jsp"><img src="Resources/Home.png" alt="Home" width="30" height="30"/></a></span>
 			<span class="Center"><a href="Air.jsp">Air</a> <a href="Water.jsp">Water</a> <a href="Hotel.jsp">Hotel</a></span>
-			<span class="Right">
-                               <%Cookie allcookies[] = {};
-                                if(request.getCookies() != null)
-									allcookies= request.getCookies();
-									int userfound = 0;
-									for (int i = 0;i < allcookies.length;i++)
-										if (allcookies[i].getName().equals("username"))
-											userfound=i;
-
-								if(userfound!=0)
-								{
-                                   System.out.println("Welcome <a href=\"usercp.jsp\">" + allcookies[userfound].getValue() + "! </a><a href=\"javascript:logout();\">Logout</a>"); 
-								}
-								else 
-								{
-									System.out.println("<a href=\"javascript:login(\'show\');\">Log In</a>");
-								}
-                               %>
-			</span>
+			<span class="Right"><%@ include file="LoginScript.jsp" %></span>
 		</nav>
 	</header>
 	<div id="popupbox"> 
@@ -78,10 +60,8 @@
 		<center><a href="javascript:login('hide');">Close</a></center> 
 </div>
 <div id="container">
-                <%
-                 Class.forName("com.mysql.jdbc.Driver");
-                 String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                 Connection DBCon = DriverManager.getConnection(DBConStr);
+<%@ include file="DBConnectCrede.jsp" %>
+<%
                  Statement airportsstatement = DBCon.createStatement();
                  ResultSet rsairport = airportsstatement.executeQuery("SELECT * from port");
                  rsairport.last();int size = rsairport.getRow();rsairport.first();
@@ -91,7 +71,7 @@
                               for(int i = 1; rsairport.next(); i++ ) 
                                  airports[i] =  rsairport.getString("country") + ", " + rsairport.getString("airport");
                     }
-                %>
+%>
                 <form method="get" action ="results.jsp">
 				<span id="from" class="Left">
 				<h1>From</h1>
