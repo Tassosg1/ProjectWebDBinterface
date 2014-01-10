@@ -1,0 +1,23 @@
+/* 
+    Document   : popupbox
+    Created on : Dec 24, 2013, 3:24:41 AM
+    Author     : StormRider
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#popupbox{
+  margin: 0; 
+  margin-left: 40%; 
+  margin-right: 40%;
+  margin-top: 50px; 
+  padding-top: 10px; 
+  width: 20%; 
+  height: 150px; 
+  position: absolute; 
+  background: #FBFBF0; 
+  border: solid #000000 2px; 
+  z-index: 9; 
+  font-family: arial; 
+  visibility: hidden; 
+  }
