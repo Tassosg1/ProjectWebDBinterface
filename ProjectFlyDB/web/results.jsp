@@ -76,6 +76,7 @@
                  Statement provider = DBCon.createStatement();
                  
                  int typeofservice = 0;
+                 int isEmpty=0;
                  if(request.getParameter("service").equals("fly")) typeofservice = 1; 
                  switch(typeofservice) {
                      case 1:
@@ -93,7 +94,10 @@
                                 <form name="flightform" method="get" action="checkout.jsp">
                                   
                                 <%
-                                while (rsfly.next()) {
+                                
+                                if (rsfly.next()) {
+                                    isEmpty=1;
+                                    while (true) {
                                     out.println("<BR><h3>Flight details:</h3>");
                                     out.println("From port: " + rsfly.getString("from_port") + "<BR>");
                                     out.println("To port: " + rsfly.getString("to_port") + "<BR>");
@@ -104,16 +108,18 @@
                                     out.println("This flight is brought to you by " + rsprovider.getString("name") + "<BR>");
                                     if (rsfly.getInt("seats") == 0) {out.println("There are no seats left on this flight.");continue;}
                                     out.println("<input type=\"radio\" required=\"required\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
-                                } %>
-                                <BR>
-                                    
-                                <input type="submit" value="Continue">
-                                </form>
+                                    if(!rsfly.next()) break;
+                                    }
+                                } else out.println("<h3> No flights were found. Try changing your search criteria.</h3>");
+                                   
+                                
+                                if(isEmpty==1) {
+                                out.println("<BR><input type=\"submit\" value=\"Continue\">");
+                                out.println("</form>");
+                                }
                          
                          
                          
-                         
-                         <%
                                 break;
                      case 2:
                          //Implement car results

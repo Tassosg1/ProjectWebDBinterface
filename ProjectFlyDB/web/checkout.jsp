@@ -64,6 +64,7 @@
                  Statement search = DBCon.createStatement();
                  Statement provider = DBCon.createStatement();
                  Statement cc = DBCon.createStatement();
+                 int hasCC=0;
                  
                  ResultSet rsfly = search.executeQuery("SELECT * FROM flight WHERE id="+request.getParameter("flight"));
                  out.println("CHECKOUT");
@@ -81,12 +82,16 @@
                   out.println("<BR><BR>Please select the CC you'll use to complete your purchase.<BR><BR>");   
                   ResultSet rscc = cc.executeQuery("SELECT * from cc WHERE username=\"" + username + "\"");
                   %> <form name="ccform" method="get" action="precomplete.jsp"> <%
-                  while(rscc.next()) {
+                  if (rscc.next()) {
+                    hasCC=1;
+                    while(true) {
                       out.println(rscc.getString("ccnum"));
                       out.println("<input type=\"hidden\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
                       out.println("<input type=\"radio\" required=\"required\" name=\"ccnum\" value=\"" + rscc.getString("ccnum") + "\"><BR>");
+                      rscc.next();
+                    }
                   }
-                    out.println("<input type=\"submit\" value=\"Pay " + rsfly.getInt("cost") + "E using this credit card.\">");
+                    if(hasCC==1) out.println("<input type=\"submit\" value=\"Pay " + rsfly.getInt("cost") + "E using this credit card.\">");
                     %>
         
 		<footer>

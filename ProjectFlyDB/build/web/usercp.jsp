@@ -50,35 +50,51 @@
                  String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
                  Connection DBCon = DriverManager.getConnection(DBConStr);
                  Statement userstatement = DBCon.createStatement();
+                 Statement ccstatement = DBCon.createStatement();
                  Statement flightstatement = DBCon.createStatement();
-                 String curruser = "";
+                 String username = "";
                  Cookie allcookies[] = {}; if(request.getCookies() != null) allcookies = request.getCookies();
                   for (int i = 0;i < allcookies.length;i++)
                       if (allcookies[i].getName().equals("username")) {
-                            curruser = allcookies[i].getValue();
+                            username = allcookies[i].getValue();
                                        }                
-                ResultSet rsuser = userstatement.executeQuery("SELECT * from user WHERE username='" + curruser + "'");
+                ResultSet rsuser = userstatement.executeQuery("SELECT * from user WHERE username='" + username + "'");
                 rsuser.first();
                 out.println("<form method=\"get\" action=\"changesth.jsp\"><BR><BR>");
-                out.println("Username: <input type=\"text\" name=\"username\" disabled=\"disabled\" value=\""+ curruser +"\"<BR><BR><BR>");
-                out.println("Password: <input type=\"password\" name=\"password\" value=\"" + rsuser.getString("password") + "\"><BR><BR>");
-                out.println("Name: <input type=\"text\" name=\"name\" value=\"" + rsuser.getString("name") + "\"> <BR><BR>");
+                out.println("Username: <input type=\"text\" name=\"username\" disabled=\"disabled\" value=\""+ username +"\"<BR><BR><BR>");
+                out.println("Password: <input type=\"password\" required=\"required\" name=\"password\" value=\"" + rsuser.getString("password") + "\"><BR><BR>");
+                out.println("Name: <input type=\"text\" name=\"name\" required=\"required\" value=\"" + rsuser.getString("name") + "\"> <BR><BR>");
                 out.println("Telephone: <input type=\"number\" name=\"tel\" value=\"" + rsuser.getString("telephone") + "\"> <BR><BR>");
                 out.println("<input type=\"hidden\" name=\"type\" value=\"user\">");
                 
-                // CREDIT CARDS
-                
                 out.println("<input type=\"submit\" value=\"Update!\">");
-                out.println("</form><BR><BR> <HR>");
+                out.println("</form><BR><BR> ");
                 
-                out.println("<h2> My Flights </h2><BR>");
-                ResultSet flights = flightstatement.executeQuery("SELECT * from bookings WHERE username='" + curruser + "'");
+                
+                
+                out.println("<h2>Credit Cards: </h2> <form name=cc ");
+                ResultSet cc = ccstatement.executeQuery("SELECT * FROM cc WHERE username='" + username + "'");
+                
+                while(cc.next()) {
+                    out.println("<form name=\"cc\" action=\"deletesth.jsp\">");
+                    out.println("<input readonly=\"readonly\" name=\"ccnum\" type=\"text\" value=\"" + cc.getString("ccnum") + "\"></option>");
+                    out.println("<input type=\"submit\" value=\"Delete CC\">");
+                    out.println("</form><BR>");
+                }
+                
+                out.println("Add a new credit card:<BR><BR>");
+                out.println("<form action=\"addsth.jsp\"> <input name=\"ccnum\" type=\"number\" min=\"1111111111111111\" max=\"9999999999999999\" value=\"1111222233334444\"> - "
+                        + "<input type=\"number\" name=\"ccver\" size=\"3\" min=\"0\" max=\"999\" value=\"123\"><input type=\"submit\" value=\"Add\"></form><BR><BR>");
+                
+                
+                out.println("<HR><h2> My Flights </h2><BR>");
+                ResultSet flights = flightstatement.executeQuery("SELECT * from bookings WHERE username='" + username + "'");
                 if(!flights.first()) out.println("You haven't booked any flights.");
                 else while(true) {
                     Statement whatflightstatement = DBCon.createStatement();
                     ResultSet whatflight = whatflightstatement.executeQuery("SELECT * from flight WHERE id=" + flights.getInt("id"));
                     whatflight.first();
-                    out.println("<form method=\"get\" action=\"deletesth\" > ");
+                    out.println("<form method=\"get\" action=\"deletesth.jsp\" > ");
                     out.println("You have booked a flight from " + whatflight.getString("from_port") + " to " + whatflight.getString("to_port") + " on " + whatflight.getString("datetime"));
                     out.println("<BR> <input type=\"submit\"value=\"I won't be able to attend.\">");
                     out.println("<input type=\"hidden\" name=\"flight\" value=\"" + flights.getInt("id") + "\">");

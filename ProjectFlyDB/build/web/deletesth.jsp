@@ -9,11 +9,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Deleting. Please wait...</title>
     </head>
     <script type="text/JavaScript">
         function timedRedirect() {
-            setTimeout("window.location=\"index.jsp\";",4000);
+            setTimeout("window.location=\"usercp.jsp\";",4000);
         }
     </script>
     
@@ -35,9 +35,16 @@
                  Connection DBCon = DriverManager.getConnection(DBConStr);
                  Statement removestatement = DBCon.createStatement();
                  
-                 ResultSet 
-                 
+                 if (request.getParameter("flight") != null) {
+                 out.println("Your flight has been deleted. You will be redirected soon.");
+                 removestatement.executeUpdate("DELETE FROM bookings WHERE username='" + username + "' AND id=" + request.getParameter("flight") + " AND seat=" + request.getParameter("seat"));
+                 } else if (request.getParameter("ccnum") != null) {
+                 removestatement.executeUpdate("DELETE FROM cc WHERE username='" + username + "' AND ccnum='" + request.getParameter("ccnum") + "'");
+                 out.println("Your CC is being deleted");
+                 }
+
                  
         %>
+    
     </body>
 </html>
