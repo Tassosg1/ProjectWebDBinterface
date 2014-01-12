@@ -19,11 +19,25 @@
     
     <body onload="javascript:timedRedirect();">
         <%
+                Cookie allcookies[] = {};
+                if (request.getCookies() != null) {
+                allcookies = request.getCookies();
+                }
+                String username = null;
+                for (int i = 0; i < allcookies.length; i++) {
+                     if (allcookies[i].getName().equals("username")) {
+                            username = allcookies[i].getValue();
+                    }
+                }
+            
                  Class.forName("com.mysql.jdbc.Driver");
                  String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
                  Connection DBCon = DriverManager.getConnection(DBConStr);
                  Statement removestatement = DBCon.createStatement();
-                 ResultSet remove = removestatement..executeQuery("SELECT * from port");
+                 
+                 ResultSet 
+                 
+                 
         %>
     </body>
 </html>
