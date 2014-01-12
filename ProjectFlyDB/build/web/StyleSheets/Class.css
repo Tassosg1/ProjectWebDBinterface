@@ -1,0 +1,19 @@
+/*element positioning*/
+.Left,.Center,.Right
+{
+	padding: 0% 0.5%;
+}
+
+.Left
+{
+	float: left;
+}
+
+.Center
+{
+}
+
+.Right
+{
+	float: right;
+}
