@@ -14,27 +14,33 @@
 		<meta charset="utf-8" />
     </head>
 
+    <script language="JavaScript" type="text/javascript">  
+   function logout(){
+        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        window.location="index.jsp";
+  }
+  </script>
+    
     <body>
 
 		<header>
 			<nav>
 				<span class="Left"><a href="index.jsp">Home</a></span>
-				<span class="Right"><a href="login.jsp">Log In</a></span>
+                                <%
+                                    Cookie allcookies[] = {};
+                                    String username = null;
+                                    allcookies= request.getCookies();
+                                    for (int i = 0;i < allcookies.length;i++)
+                                       if (allcookies[i].getName().equals("username")) {
+                                    username = allcookies[i].getValue();
+                                    out.println("<span class=\"Right\">Welcome <a href=\"usercp.jsp\">" + allcookies[i].getValue() + "! </a>");
+                                    out.println("<a href=\"javascript:logout();\">Logout</a></span>"); }
+                                %>
+				
 			</nav>
 		</header>
-
-		<!-- Buy is successful! Let's print a happy message to inform them they've lost their money.
-                     As a reminder, the strings for getting data from MySQL database are (the database formed by the updated script):
-                     Class.forName("com.mysql.jdbc.Driver");
-                     String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                     Connection DBCon = DriverManager.getConnection(DBConStr);
-                     Statement airports = DBCon.createStatement();
-                     ResultSet rsairporst = albums.executeQuery("SELECT * from airport");
-                     From there on, several java functions (.first(),.next()) help you manage the results, and functions like (rsairport.getString("airport") to access them.
-                     ? ?????? ?????? ?? ??? ?????????? ???? home ? control panel ??? ??????.
-                     ??????, ???? ??? ??? ??????, ???????? ?? ??? ??????????? ????????? ??? ???? ????/????? ??/????/ ?????????? ? ???????.
-                     ??????.
-                -->
+        <BR><BR><BR>
+		Your booking was successful.
                      
         
 		<footer>

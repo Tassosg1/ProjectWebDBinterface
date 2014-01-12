@@ -28,7 +28,6 @@
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
         window.location="index.jsp";
   }
-
   </script>
 </head>
 
@@ -91,7 +90,7 @@
                                 ResultSet rsfly = search.executeQuery("SELECT * FROM flight WHERE from_port='" + from_air + "' AND to_port='" + to_air + "' AND DATE(datetime) = '" + date + "'" );
                                 %>
                                 
-                                <form method="get" action="checkout.jsp">
+                                <form name="flightform" method="get" action="checkout.jsp">
                                   
                                 <%
                                 while (rsfly.next()) {
@@ -99,11 +98,12 @@
                                     out.println("From port: " + rsfly.getString("from_port") + "<BR>");
                                     out.println("To port: " + rsfly.getString("to_port") + "<BR>");
                                     out.println("Time of flight: " + rsfly.getString("datetime") + "<BR>");
-                                    out.println("Available Seats: " + rsfly.getString("seats") + "<BR>");
+                                    out.println("Available Seats: " + rsfly.getInt("seats") + "<BR>");
                                     out.println("Total cost is " + rsfly.getInt("cost") + "<BR>");
                                     ResultSet rsprovider = provider.executeQuery("SELECT name FROM flightcom WHERE vat=" + rsfly.getInt("vat"));rsprovider.first();
                                     out.println("This flight is brought to you by " + rsprovider.getString("name") + "<BR>");
-                                    out.println("<input type=\"radio\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
+                                    if (rsfly.getInt("seats") == 0) {out.println("There are no seats left on this flight.");continue;}
+                                    out.println("<input type=\"radio\" required=\"required\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
                                 } %>
                                 <BR>
                                     

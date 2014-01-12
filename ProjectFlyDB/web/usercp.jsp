@@ -66,13 +66,8 @@
                 out.println("Telephone: <input type=\"number\" name=\"tel\" value=\"" + rsuser.getString("telephone") + "\"> <BR><BR>");
                 out.println("<input type=\"hidden\" name=\"type\" value=\"user\">");
                 
-                if (rsuser.getInt("ccnum") + rsuser.getInt("ccver") == 0) {
-                out.println("CCNum: <input type=\"number\" name=\"ccnum\" value=\"\"> <BR><BR>");
-                out.println("CCVer: <input type=\"number\" name=\"ccver\" value=\"\"> <BR><BR>");
-                } else {
-                out.println("CCNum: <input type=\"number\" name=\"ccnum\" disabled=\"disabled\" value=\"" + rsuser.getString("ccnum") + "\"> <BR><BR>");
-                out.println("CCVer: <input type=\"number\" name=\"ccver\" disabled=\"disabled\" value=\"" + rsuser.getString("ccver") + "\"> <BR><BR>");
-                }
+                // CREDIT CARDS
+                
                 out.println("<input type=\"submit\" value=\"Update!\">");
                 out.println("</form><BR><BR> <HR>");
                 
