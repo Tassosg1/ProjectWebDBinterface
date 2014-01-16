@@ -39,10 +39,10 @@
 				
 			</nav>
 		</header>
-        <BR><BR><BR>
+                <BR><BR><BR>
 		Your booking was successful.
                      
-        
+                <%out.println(request.getParameter("destination"));%>
 		<footer>
 			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>
 		</footer>
