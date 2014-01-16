@@ -1,20 +1,11 @@
 /*header menu styles*/
 header
 {
-	position: fixed;
+	position: absolute;
 	background-color: black;
 	color: white;
 	top: 0;
 	z-index: 1;
-}
-
-/*content menu styles*/
-#container
-{
-	position: static;
-	left: 0;
-	right: 0;
-	margin: 1.5em auto;
 }
 
 /*footer menu styles*/
@@ -29,7 +20,7 @@ footer
 }
 
 /*generic styles*/
-header,footer,#container
+header,footer
 {
 	width: 100%;
 }
