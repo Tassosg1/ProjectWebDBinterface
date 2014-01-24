@@ -22,30 +22,12 @@
   </script>
     
     <body>
-
-		<header>
-			<nav>
-				<span class="Left"><a href="index.jsp">Home</a></span>
-                                <%
-                                    Cookie allcookies[] = {};
-                                    String username = null;
-                                    allcookies= request.getCookies();
-                                    for (int i = 0;i < allcookies.length;i++)
-                                       if (allcookies[i].getName().equals("username")) {
-                                    username = allcookies[i].getValue();
-                                    out.println("<span class=\"Right\">Welcome <a href=\"usercp.jsp\">" + allcookies[i].getValue() + "! </a>");
-                                    out.println("<a href=\"javascript:logout();\">Logout</a></span>"); }
-                                %>
-				
-			</nav>
-		</header>
+<%@ include file="Header.jsp" %>
+<%@ include file="popuplogin.jsp" %>
                 <BR><BR><BR>
 		Your booking was successful.
                      
                 <%out.println(request.getParameter("destination"));%>
-		<footer>
-			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>
-		</footer>
-
+<%@ include file="Footer.jsp" %>
 	</body>
 </html>

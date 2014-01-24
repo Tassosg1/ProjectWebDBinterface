@@ -42,13 +42,10 @@
   </script>
 </head>
 <body>
-<%@ include file="Header.jsp" %>
-<%@ include file="popuplogin.jsp" %>
+<jsp:include page="Header.jsp" />
 <div id="container">
-<%@ include file="cred/DBConnectCrede.jsp" %>
-<%
-        Statement airportsstatement = DBCon.createStatement();
-        ResultSet rsairport = airportsstatement.executeQuery("SELECT * from port");
+<jsp:include page="cred/DBConnectCrede.jsp" />
+<%ResultSet rsairport = airportsstatement.executeQuery("SELECT * from port");
 	rsairport.last();int size = rsairport.getRow();rsairport.first();
 	String[] airports = new String[size];
 	if (rsairport.first())
@@ -58,7 +55,6 @@
 		airports[i] =  rsairport.getString("country") + ", " + rsairport.getString("airport");
 	}%>
                 <form method="get" action ="results.jsp">
-                    <input type="hidden" name ="service" value="fly">
 				<span id="from" class="Left">
 				<h1>From</h1>
 				<label for="from_air">Airport :</label>
@@ -70,7 +66,7 @@
                 </select>
 				<br />
 				<label for="from_date">Date</label>
-				<input type="text" name="date" id="from_date" />
+				<input type="text" id="from_date" />
 				</span>
 				<span id ="to" class="Right">
 				<h1>To</h1>

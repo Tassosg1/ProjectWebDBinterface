@@ -23,14 +23,8 @@
   </script>
     
     <body>
-
-		<header>
-			<nav>
-				<span class="Left"><a href="index.jsp">Home</a></span>
-				<span class="Right"><a href="javascript:logout();">Logout</a></center> </span>
-			</nav>
-		</header>
-
+<%@ include file="Header.jsp" %>
+<%@ include file="popuplogin.jsp" %>
 		<!-- Here goes the user Control Panel page. From here a user can change his details. Maybe view his flights, maybe cancel them. Dunno.
                      As a reminder, the strings for getting data from MySQL database are (the database formed by the updated script):
                      Class.forName("com.mysql.jdbc.Driver");
@@ -44,11 +38,8 @@
                 <BR><BR><BR>
                 <center>This is your control panel. From here you can change your data, or cancel your flights.
                 <HR>
-                    
+<%@ include file="cred/DBConnectCrede.jsp" %>  
                 <%
-                 Class.forName("com.mysql.jdbc.Driver");
-                 String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                 Connection DBCon = DriverManager.getConnection(DBConStr);
                  Statement userstatement = DBCon.createStatement();
                  Statement ccstatement = DBCon.createStatement();
                  Statement flightstatement = DBCon.createStatement();
@@ -104,10 +95,6 @@
                 }
                 
                 %>
-        
-		<footer>
-			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>
-		</footer>
-
+<%@ include file="Footer.jsp" %>
 	</body>
 </html>

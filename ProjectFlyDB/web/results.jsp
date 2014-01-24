@@ -32,46 +32,10 @@
 </head>
 
     <body>
-
-		<header>
-			<nav>
-				<span class="Left"><a href="index.jsp">Home</a></span>
-                                <%
-                                    Cookie allcookies[] = {};
-                                    if(request.getCookies() != null)
-                                        allcookies= request.getCookies();
-                                    int userfound = 0;
-                                    for (int i = 0;i < allcookies.length;i++)
-                                       if (allcookies[i].getName().equals("username"))
-                                           userfound=i;
-                                    
-                                if(userfound!=0) {
-                                    out.println("<span class=\"Right\">Welcome <a href=\"usercp.jsp\">" + allcookies[userfound].getValue() + "! </a>");
-                                    out.println("<a href=\"javascript:logout();\">Logout</a></span>"); } else {
-                                %> 
-                                <span class="Right"><a href="javascript:login('show');">Log In</a></span>
-                                <%
-                                }
-                                %>
-				
-			</nav>
-		</header>
-
-<div id="popupbox"> 
-    <form name="login" action="verify.jsp" method="get">
-        <center>Username:</center>
-        <center><input name="username" size="14" /></center>
-        <center>Password:</center>
-        <center><input name="password" type="password" size="14" /></center>
-        <center><input type="submit" name="submit" value="login" /></center>
-    </form>
-    <center><a href="javascript:login('hide');">Close</a></center> 
-</div> 
-                
-                 <%
-		 Class.forName("com.mysql.jdbc.Driver");
-                 String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                 Connection DBCon = DriverManager.getConnection(DBConStr);
+<%@ include file="Header.jsp" %>
+<%@ include file="popuplogin.jsp" %>
+<%@ include file="cred/DBConnectCrede.jsp" %>
+				<%
                  Statement search = DBCon.createStatement();
                  Statement provider = DBCon.createStatement();
                  
@@ -83,12 +47,20 @@
                                 String from_air = request.getParameter("from_air");
                                 String to_air = request.getParameter("to_air");
                                 String date = request.getParameter("date");
+                                
+                                //DATE MANIPULATION
+                                // Comes: 25/12/2013 Expects: 2013/12/25
+                                
+                                String[] dateFragments = date.split("/");
+                                date = "";
+                                date = date.concat(dateFragments[2] + "/" + dateFragments[0] + "/" + dateFragments[1]);
+                                
                                 out.println("<BR><BR><BR><BR>Now showing results for:<BR> From: "+from_air+"<BR>To: " + to_air + "<BR> On date: " + date + "<BR>");
                                 
                                 {int comma = from_air.lastIndexOf(',');from_air = from_air.substring(comma+2);};
                                 {int comma = to_air.lastIndexOf(',');to_air = to_air.substring(comma+2);};
 
-                                ResultSet rsfly = search.executeQuery("SELECT * FROM flight WHERE from_port='" + from_air + "' AND to_port='" + to_air + "' AND DATE(datetime) = '" + date + "'" );
+                                ResultSet rsfly = search.executeQuery("SELECT * FROM flight WHERE from_port='" + from_air + "' AND to_port='" + to_air + "' AND CAST(datetime AS DATE) = '" + date + "'" );
                                 %>
                                 
                                 <form name="flightform" method="get" action="checkout.jsp">
@@ -130,9 +102,6 @@
                  }
                      
                  %>
-		<footer>
-			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>
-		</footer>
-
+<%@ include file="Footer.jsp" %>
 	</body>
 </html>

@@ -29,10 +29,9 @@
                             username = allcookies[i].getValue();
                     }
                 }
-            
-                 Class.forName("com.mysql.jdbc.Driver");
-                 String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                 Connection DBCon = DriverManager.getConnection(DBConStr);
+				%>
+<%@ include file="cred/DBConnectCrede.jsp" %>
+				<%
                  Statement removestatement = DBCon.createStatement();
                  
                  if (request.getParameter("password") != null)

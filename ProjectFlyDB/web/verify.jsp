@@ -21,19 +21,12 @@ function timedRedirect() {
 </script>
     
     <body onload="javascript:timedRedirect();">
-
-		<header>
-			<nav>
-				<span class="Left"><a href="index.jsp">Home</a></span>
-			</nav>
-		</header>
+<%@ include file="Header.jsp" %>
 <BR>
 <BR>		
+<%@ include file="cred/DBConnectCrede.jsp" %>
                 <%
-                 Class.forName("com.mysql.jdbc.Driver");
-                 String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                 Connection DBCon = DriverManager.getConnection(DBConStr);
-                 Statement userstatement = DBCon.createStatement();
+		 Statement userstatement = DBCon.createStatement();
                  ResultSet rsuser = userstatement.executeQuery("SELECT * from user WHERE username='" + request.getParameter("username") + "'");
                  if(rsuser.first()) {
                      if (request.getParameter("password").equals(rsuser.getString("password"))) {
@@ -44,10 +37,6 @@ function timedRedirect() {
                      out.println("This user ("+request.getParameter("username")+") does not exist.<BR> Please try again or contact the admin.");
                  }
                 %>
-        
-		<footer>
-			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>
-		</footer>
-
+<%@ include file="Footer.jsp" %>
 	</body>
 </html>
