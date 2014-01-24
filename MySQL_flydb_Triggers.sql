@@ -1,3 +1,5 @@
+USE `flydb`;
+
 create trigger book_seats before insert on bookings for each row
 SET NEW.seat = (SELECT seats FROM flight WHERE flight.id=NEW.id);
 
