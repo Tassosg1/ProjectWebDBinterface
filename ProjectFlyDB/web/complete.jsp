@@ -17,9 +17,9 @@
                     username = allcookies[i].getValue();
                 }
             }
-            Class.forName("com.mysql.jdbc.Driver");
-            String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-            Connection DBCon = DriverManager.getConnection(DBConStr);
+			%>
+<%@ include file="cred/DBConnectCrede.jsp" %>
+			<%
             //FIRST WE CHECK FOR THE CCVER NUMBER
             Statement cc = DBCon.createStatement();
             Statement book = DBCon.createStatement();

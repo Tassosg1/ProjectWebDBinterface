@@ -39,28 +39,10 @@
   </script>
 </head>
 
-    <body onload="javascript:check('username');">
-
-		<header>
-			<nav>
-				<span class="Left"><a href="index.jsp">Home</a></span>
-                                <%
-                                    Cookie allcookies[] = {};
-                                    String username = null;
-                                    allcookies= request.getCookies();
-                                    for (int i = 0;i < allcookies.length;i++)
-                                       if (allcookies[i].getName().equals("username")) {
-                                    username = allcookies[i].getValue();
-                                    out.println("<span class=\"Right\">Welcome <a href=\"usercp.jsp\">" + allcookies[i].getValue() + "! </a>");
-                                    out.println("<a href=\"javascript:logout();\">Logout</a></span>"); }
-                                %>
-				
-			</nav>
-		</header>
+  <body onload="javascript:check('username');">
+<%@ include file="Header.jsp" %>
+<%@ include file="cred/DBConnectCrede.jsp" %>
 <%
-                 Class.forName("com.mysql.jdbc.Driver");
-                 String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                 Connection DBCon = DriverManager.getConnection(DBConStr);
                  Statement search = DBCon.createStatement();
                  Statement provider = DBCon.createStatement();
                  Statement cc = DBCon.createStatement();

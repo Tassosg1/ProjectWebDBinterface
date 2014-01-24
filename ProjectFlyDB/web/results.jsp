@@ -32,46 +32,9 @@
 </head>
 
     <body>
-
-		<header>
-			<nav>
-				<span class="Left"><a href="index.jsp">Home</a></span>
-                                <%
-                                    Cookie allcookies[] = {};
-                                    if(request.getCookies() != null)
-                                        allcookies= request.getCookies();
-                                    int userfound = 0;
-                                    for (int i = 0;i < allcookies.length;i++)
-                                       if (allcookies[i].getName().equals("username"))
-                                           userfound=i;
-                                    
-                                if(userfound!=0) {
-                                    out.println("<span class=\"Right\">Welcome <a href=\"usercp.jsp\">" + allcookies[userfound].getValue() + "! </a>");
-                                    out.println("<a href=\"javascript:logout();\">Logout</a></span>"); } else {
-                                %> 
-                                <span class="Right"><a href="javascript:login('show');">Log In</a></span>
-                                <%
-                                }
-                                %>
-				
-			</nav>
-		</header>
-
-<div id="popupbox"> 
-    <form name="login" action="verify.jsp" method="get">
-        <center>Username:</center>
-        <center><input name="username" size="14" /></center>
-        <center>Password:</center>
-        <center><input name="password" type="password" size="14" /></center>
-        <center><input type="submit" name="submit" value="login" /></center>
-    </form>
-    <center><a href="javascript:login('hide');">Close</a></center> 
-</div> 
-                
-                 <%
-		 Class.forName("com.mysql.jdbc.Driver");
-                 String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                 Connection DBCon = DriverManager.getConnection(DBConStr);
+<%@ include file="Header.jsp" %>
+<%@ include file="cred/DBConnectCrede.jsp" %>
+				<%
                  Statement search = DBCon.createStatement();
                  Statement provider = DBCon.createStatement();
                  
@@ -130,9 +93,6 @@
                  }
                      
                  %>
-		<footer>
-			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>
-		</footer>
-
+<%@ include file="Footer.jsp" %>
 	</body>
 </html>
