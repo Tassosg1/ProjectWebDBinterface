@@ -23,6 +23,7 @@
     
     <body>
 <%@ include file="Header.jsp" %>
+<%@ include file="popuplogin.jsp" %>
                 <BR><BR><BR>
 		Your booking was successful.
                      

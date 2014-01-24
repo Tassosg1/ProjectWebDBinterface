@@ -42,10 +42,13 @@
   </script>
 </head>
 <body>
-<jsp:include page="Header.jsp" />
+<%@ include file="Header.jsp" %>
+<%@ include file="popuplogin.jsp" %>
 <div id="container">
-<jsp:include page="cred/DBConnectCrede.jsp" />
-<%ResultSet rsairport = airportsstatement.executeQuery("SELECT * from port");
+<%@ include file="cred/DBConnectCrede.jsp" %>
+<%      
+        Statement airportsstatement = DBCon.createStatement();
+        ResultSet rsairport = airportsstatement.executeQuery("SELECT * from port");
 	rsairport.last();int size = rsairport.getRow();rsairport.first();
 	String[] airports = new String[size];
 	if (rsairport.first())

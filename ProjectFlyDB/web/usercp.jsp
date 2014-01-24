@@ -24,6 +24,7 @@
     
     <body>
 <%@ include file="Header.jsp" %>
+<%@ include file="popuplogin.jsp" %>
 		<!-- Here goes the user Control Panel page. From here a user can change his details. Maybe view his flights, maybe cancel them. Dunno.
                      As a reminder, the strings for getting data from MySQL database are (the database formed by the updated script):
                      Class.forName("com.mysql.jdbc.Driver");

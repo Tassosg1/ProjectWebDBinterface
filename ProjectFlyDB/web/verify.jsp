@@ -26,7 +26,7 @@ function timedRedirect() {
 <BR>		
 <%@ include file="cred/DBConnectCrede.jsp" %>
                 <%
-				Statement userstatement = DBCon.createStatement();
+		 Statement userstatement = DBCon.createStatement();
                  ResultSet rsuser = userstatement.executeQuery("SELECT * from user WHERE username='" + request.getParameter("username") + "'");
                  if(rsuser.first()) {
                      if (request.getParameter("password").equals(rsuser.getString("password"))) {
