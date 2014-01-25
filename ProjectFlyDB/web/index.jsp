@@ -5,7 +5,7 @@
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
-        <link rel="stylesheet" type="text/css" href="./StyleSheets/PopupBox.css" />
+        <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/MainContent.css" />
         <!--<link rel="stylesheet" type="text/css" href="Stylesheets/index.css" />-->
 		<!--External-->
