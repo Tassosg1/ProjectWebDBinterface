@@ -2,12 +2,13 @@
 <html>
 	<head>
 		<title>Fly Me To The Moon - Index</title>
+		<link rel="shortcut icon" href="Resources/favicon.ico" />
+		<link rel="icon" href="Resources/favicon.ico" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
         <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/MainContent.css" />
-        <!--<link rel="stylesheet" type="text/css" href="Stylesheets/index.css" />-->
 		<!--External-->
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -17,13 +18,13 @@
 		<meta name="author" content="OpenSource @ https://github.com/Tassosg1/ProjectWebDBinterface" />
 		<meta name="robots" content="noindex, nofollow" />
 		<meta charset="utf-8" />
-		<script src="Scripts/CookieLogin.js"></script>
+		<script src="Scripts/login.js"></script>
 		<script src="Scripts/Date.js"></script>
-
+		<script src="Scripts/logout.js"></script>
 </head>
 <body>
-<%@ include file="Header.jsp" %>
-<%@ include file="popuplogin.jsp" %>
+<%@ include file="Includes/Header.jsp" %>
+<%@ include file="Includes/popuplogin.jsp" %>
 <div id="container">
 <%@ include file="cred/DBConnectCrede.jsp" %>
 <%
@@ -37,8 +38,9 @@
 	for(int i = 1; rsairport.next(); i++ ) 
 		airports[i] =  rsairport.getString("country") + ", " + rsairport.getString("airport");
 	}%>
+	
                 <form method="get" action ="results.jsp">
-                    <input type="hidden" name ="service" value="fly">
+                <input type="hidden" name ="service" value="fly">
 				<span id="from" class="Left">
 				<h1>From</h1>
 				<label for="from_air">Airport :</label>
@@ -68,6 +70,6 @@
 				<input type="submit" value="Search!">
                 </form>
 			</div>
-<%@ include file="Footer.jsp" %>
+<%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>

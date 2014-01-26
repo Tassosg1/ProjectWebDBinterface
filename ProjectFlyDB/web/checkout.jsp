@@ -1,45 +1,23 @@
 <%@page import="java.sql.*"%>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en"  >
-
+<html>
 	<head>
-        <title>Fly Me To The Moon - Checkout</title>
-				<link rel="stylesheet" type="text/css" href="./StyleSheets/generic.css" />
+		<title>Fly Me To The Moon - Checkout</title>
+		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
-                <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
-                <!-- PLEASE mind the case-sensitivity (Glassfish©). Use the format recommended ^ -->
-                <!--<link rel="stylesheet" type="text/css" href="Stylesheets/index.css" />-->
+        <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
+		<link rel="stylesheet" type="text/css" href="./StyleSheets/MainContent.css" />
 		<meta name="description" content="" />
 		<meta name="author" content="OpenSource @ https://github.com/Tassosg1/ProjectWebDBinterface" />
 		<meta name="robots" content="noindex, nofollow" />
 		<meta charset="utf-8" />
-                 
-  <script language="JavaScript" type="text/javascript">  
-    function check(cookiename){
-        var name = cookiename + "=";
-        var found = 0;
-        var ca = document.cookie.split(';');
-        for(var i=0; i<ca.length; i++) 
-        {
-            var c = ca[i].trim();
-            if (c.indexOf(name)===0) {
-                found = 1;
-            }
-        }
-        if(found===0) {
-            window.alert("You must be logged in in order to continue.");
-            window.history.back();
-        }
-  }
-  function logout(){
-        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-        window.location="index.jsp";
-  }
-  </script>
+		<script src="Scripts/login.js"></script>
+		<script src="Scripts/check.js"></script>
+		<script src="Scripts/logout.js"></script>
 </head>
-
-  <body onload="javascript:check('username');">
+<body onload="javascript:check('username');">
 <%@ include file="Header.jsp" %>
 <%@ include file="popuplogin.jsp" %>
 <%@ include file="cred/DBConnectCrede.jsp" %>

@@ -1,11 +1,13 @@
 <%@page import="java.sql.*"%>
 <html>
 	<head>
-		<title>Fly Me To The Moon - Index</title>
+		<title>Fly Me To The Moon - Ship Booking</title>
+		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
-        <link rel="stylesheet" type="text/css" href="./StyleSheets/Popupbox.css" />
+        <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/MainContent.css" />
         <!--<link rel="stylesheet" type="text/css" href="Stylesheets/index.css" />-->
 		<!--External-->
@@ -17,33 +19,13 @@
 		<meta name="author" content="OpenSource @ https://github.com/Tassosg1/ProjectWebDBinterface" />
 		<meta name="robots" content="noindex, nofollow" />
 		<meta charset="utf-8" />
-		<script language="JavaScript" type="text/javascript">  
-		function login(showhide)
-		{
-			if(showhide === "show")
-			{
-				document.getElementById('popupbox').style.visibility="visible";
-			}
-			else if(showhide === "hide")
-			{
-				document.getElementById('popupbox').style.visibility="hidden"; 
-			}
-		}
-		function logout()
-		{
-		document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-		window.location="index.jsp";
-		}
-		$(function()
-		{
-			$("#from_date").datepicker();
-			$("#to_date").datepicker();
-		});
-  </script>
+		<script src="Scripts/login.js"></script>
+		<script src="Scripts/Date.js"></script>
+		<script src="Scripts/logout.js"></script>
 </head>
 <body>
-<%@ include file="Header.jsp" %>
-<%@ include file="popuplogin.jsp" %>
+<%@ include file="Includes/Header.jsp" %>
+<%@ include file="Includes/popuplogin.jsp" %>
 <div id="container">
 <%@ include file="cred/DBConnectCrede.jsp" %>
 <%
@@ -60,7 +42,7 @@
                 <form method="get" action ="results.jsp">
 				<span id="from" class="Left">
 				<h1>From</h1>
-				<label for="from_air">Airport :</label>
+				<label for="from_air">Port :</label>
                 <select name="from_air" id="from_air">
                 <%
                 for (int i = 0;i < airports.length;i++)
@@ -73,7 +55,7 @@
 				</span>
 				<span id ="to" class="Right">
 				<h1>To</h1>
-                <label for="to_air">Airport : </label>
+                <label for="to_air">Port : </label>
                 <select name="to_air" id="to_air">
                 <%
                 for (int i = 0;i < airports.length;i++)
@@ -87,6 +69,6 @@
 				<input type="submit" value="Search!">
                 </form>
 			</div>
-<%@ include file="Footer.jsp" %>
+<%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>

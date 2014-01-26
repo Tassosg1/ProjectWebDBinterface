@@ -1,13 +1,14 @@
 <%@page import="java.sql.*"%>
 <html>
 	<head>
-		<title>Fly Me To The Moon - Index</title>
+		<title>Fly Me To The Moon - Airplane Booking</title>
+		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon">
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
-        <link rel="stylesheet" type="text/css" href="./StyleSheets/Popupbox.css" />
+        <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/MainContent.css" />
-        <!--<link rel="stylesheet" type="text/css" href="Stylesheets/index.css" />-->
 		<!--External-->
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
 		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
@@ -17,33 +18,13 @@
 		<meta name="author" content="OpenSource @ https://github.com/Tassosg1/ProjectWebDBinterface" />
 		<meta name="robots" content="noindex, nofollow" />
 		<meta charset="utf-8" />
-		<script language="JavaScript" type="text/javascript">  
-		function login(showhide)
-		{
-			if(showhide === "show")
-			{
-				document.getElementById('popupbox').style.visibility="visible";
-			}
-			else if(showhide === "hide")
-			{
-				document.getElementById('popupbox').style.visibility="hidden"; 
-			}
-		}
-		function logout()
-		{
-		document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
-		window.location="index.jsp";
-		}
-		$(function()
-		{
-			$("#from_date").datepicker();
-			$("#to_date").datepicker();
-		});
-  </script>
+		<script src="Scripts/login.js"></script>
+		<script src="Scripts/Date.js"></script>
+		<script src="Scripts/logout.js"></script>
 </head>
 <body>
-<%@ include file="Header.jsp" %>
-<%@ include file="popuplogin.jsp" %>
+<%@ include file="Includes/Header.jsp" %>
+<%@ include file="Includes/popuplogin.jsp" %>
 <div id="container">
 <%@ include file="cred/DBConnectCrede.jsp" %>
 <%
@@ -58,6 +39,7 @@
 		airports[i] =  rsairport.getString("country") + ", " + rsairport.getString("airport");
 	}%>
                 <form method="get" action ="results.jsp">
+                    <input type="hidden" name ="service" value="fly">
 				<span id="from" class="Left">
 				<h1>From</h1>
 				<label for="from_air">Airport :</label>
@@ -69,7 +51,7 @@
                 </select>
 				<br />
 				<label for="from_date">Date</label>
-				<input type="text" id="from_date" />
+				<input type="text" name="date" id="from_date" />
 				</span>
 				<span id ="to" class="Right">
 				<h1>To</h1>
@@ -87,6 +69,6 @@
 				<input type="submit" value="Search!">
                 </form>
 			</div>
-<%@ include file="Footer.jsp" %>
+<%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>
