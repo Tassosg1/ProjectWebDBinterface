@@ -19,13 +19,15 @@
 <body>
 <%@ include file="Includes/Header.jsp" %>
 <%@ include file="Includes/popuplogin.jsp" %>
+<div id="container">
 <%@ include file="cred/DBConnectCrede.jsp" %>
-				<%
+<%
                  Statement search = DBCon.createStatement();
                  Statement provider = DBCon.createStatement();
                  
                  int typeofservice = 0;
-                 int isEmpty=0;
+                 int isNotEmpty=0;
+				 int LeftOrRight=0;
                  if(request.getParameter("service").equals("fly")) typeofservice = 1; 
                  switch(typeofservice) {
                      case 1:
@@ -40,7 +42,7 @@
                                 date = "";
                                 date = date.concat(dateFragments[2] + "/" + dateFragments[0] + "/" + dateFragments[1]);
                                 
-                                out.println("<BR><BR><BR><BR>Now showing results for:<BR> From: "+from_air+"<BR>To: " + to_air + "<BR> On date: " + date + "<BR>");
+                                out.println("Now showing results for:<br /> Departure: "+from_air+"<br /> Arrival: " + to_air + "<br /> On date: " + date);
                                 
                                 {int comma = from_air.lastIndexOf(',');from_air = from_air.substring(comma+2);};
                                 {int comma = to_air.lastIndexOf(',');to_air = to_air.substring(comma+2);};
@@ -52,32 +54,42 @@
                                   
                                 <%
                                 
-                                if (rsfly.next()) {
-                                    isEmpty=1;
-                                    while (true) {
-                                    out.println("<BR><h3>Flight details:</h3>");
-                                    out.println("From port: " + rsfly.getString("from_port") + "<BR>");
-                                    out.println("To port: " + rsfly.getString("to_port") + "<BR>");
-                                    out.println("Time of flight: " + rsfly.getString("datetime") + "<BR>");
-                                    out.println("Available Seats: " + rsfly.getInt("seats") + "<BR>");
-                                    out.println("Total cost is " + rsfly.getInt("cost") + "<BR>");
-                                    ResultSet rsprovider = provider.executeQuery("SELECT name FROM flightcom WHERE vat=" + rsfly.getInt("vat"));rsprovider.first();
-                                    out.println("This flight is brought to you by " + rsprovider.getString("name") + "<BR>");
-                                    if (rsfly.getInt("seats") == 0) {out.println("There are no seats left on this flight.");continue;}
-                                    out.println("<input type=\"radio\" required=\"required\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
-                                    if(!rsfly.next()) break;
-                                    }
-                                } else out.println("<h3> No flights were found. Try changing your search criteria.</h3>");
-                                   
-                                
-                                if(isEmpty==1) {
-                                out.println("<BR><input type=\"submit\" value=\"Continue\">");
-                                out.println("</form>");
+                                if (rsfly.next())
+								{
+                                    isNotEmpty=1;
+                                    LeftOrRight=1;
+									while (true)
+									{
+									LeftOrRight++;
+									%>
+									<span class="<% if((LeftOrRight%2)==1) out.println("Left"); else out.println("Right"); %>" >
+									<%
+										out.println("<h1>Flight : #" + rsfly.getInt("id") + ":</h1>");
+										out.println("Departure Airport: " + rsfly.getString("from_port") + "<br />");
+										out.println("Arrival Airport: " + rsfly.getString("to_port") + "<br />");
+										out.println("Time of Departure: " + rsfly.getString("datetime") + "<br />");
+										out.println("Available Seats: " + rsfly.getInt("seats") + "<br />");
+										out.println("Total cost is : " + rsfly.getInt("cost") + "€ <br />");
+										ResultSet rsprovider = provider.executeQuery("SELECT name FROM flightcom WHERE vat=" + rsfly.getInt("vat"));
+										rsprovider.first();
+										out.println("Flight provided by : " + rsprovider.getString("name") + "<br />");
+										if (rsfly.getInt("seats") == 0) {out.println("There are no seats left on this flight.");continue;}
+										out.println("<input type=\"radio\" required=\"required\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
+										if(!rsfly.next())break;
+									}
+									%>
+									</span>
+									<%
                                 }
-                         
-                         
-                         
-                                break;
+								else
+								out.println("<h1> No flights were found. Try changing your search criteria.</h1>");
+                                if(isNotEmpty==1) {
+                                out.println("<input type=\"submit\" value=\"Continue\">");\
+                                }
+								break;
+								%>
+								</form>
+								<%
                      case 2:
                          //Implement car results
                                 break;
@@ -85,8 +97,8 @@
                          //Implement room results chWchwchw
                                 break;
                  }
-                     
-                 %>
+%>
+</div>
 <%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>
