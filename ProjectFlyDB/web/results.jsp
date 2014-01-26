@@ -65,10 +65,10 @@
 									<span class="<% if((LeftOrRight%2)==0) out.println("Left"); else out.println("Right"); %>" >
 									<%
 										out.println("<h1>Flight : #" + rsfly.getInt("id") + ":</h1>");
-										out.println("Departure Airport: " + rsfly.getString("from_port") + "<br />");
-										out.println("Arrival Airport: " + rsfly.getString("to_port") + "<br />");
-										out.println("Time of Departure: " + rsfly.getString("datetime") + "<br />");
-										out.println("Available Seats: " + rsfly.getInt("seats") + "<br />");
+										out.println("Departure Airport : " + rsfly.getString("from_port") + "<br />");
+										out.println("Arrival Airport : " + rsfly.getString("to_port") + "<br />");
+										out.println("Time of Departure : " + rsfly.getString("datetime") + "<br />");
+										out.println("Available Seats : " + rsfly.getInt("seats") + "<br />");
 										out.println("Total cost is : " + rsfly.getInt("cost") + "<br />");
 										ResultSet rsprovider = provider.executeQuery("SELECT name FROM flightcom WHERE vat=" + rsfly.getInt("vat"));
 										rsprovider.first();
