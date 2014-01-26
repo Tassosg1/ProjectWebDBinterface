@@ -50,9 +50,6 @@
                     out.println("<option value=\"" + airports[i] + "\"> " + airports[i] + "</option>");
                 %>   
                 </select>
-				<br />
-				<label for="from_date">Date : </label>
-				<input type="text" title="The date you want to fly.&#013;If you want results for a range of dates, also fill the 'to' date field." required="required" name="date" id="from_date" />
 				</span>
 				<span id ="to" class="Right">
 				<h1>To</h1>
@@ -63,10 +60,9 @@
                     out.println("<option value=\"" + airports[i] + "\"> " + airports[i] + "</option>");
                 %>   
                 </select>
-				<br />
-				<label for="to_date">Date : </label>
-				<input type="text" title="Fill this field in case you want to&#013;search for a range of dates." id="to_date" />
 				</span>
+				<label for="from_date">Date : </label>
+				<input type="text" title="The date you want to fly.&#013;If you want results for a range of dates, also fill the 'to' date field." required="required" name="date" id="from_date" />
 				<input class="Center" title="Search for a flight matching your criteria." type="submit" value="Search!">
                 </form>
 			</div>
