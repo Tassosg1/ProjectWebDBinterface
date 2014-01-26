@@ -52,7 +52,7 @@
                 </select>
 				<br />
 				<label for="from_date">Date</label>
-				<input type="text" name="date" id="from_date" />
+				<input type="text" required="required" name="date" id="from_date" />
 				</span>
 				<span id ="to" class="Right">
 				<h1>To</h1>

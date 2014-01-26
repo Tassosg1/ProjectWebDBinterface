@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>Fly Me To The Moon - User Control Panel</title>
-		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
@@ -38,10 +38,10 @@
                  Statement ccstatement = DBCon.createStatement();
                  Statement flightstatement = DBCon.createStatement();
                  String username = "";
-                 Cookie allcookies[] = {}; if(request.getCookies() != null) allcookies = request.getCookies();
-                  for (int i = 0;i < allcookies.length;i++)
-                      if (allcookies[i].getName().equals("username")) {
-                            username = allcookies[i].getValue();
+                 Cookie allcookiesSTR[] = {}; if(request.getCookies() != null) allcookiesSTR = request.getCookies();
+                  for (int i = 0;i < allcookiesSTR.length;i++)
+                      if (allcookiesSTR[i].getName().equals("username")) {
+                            username = allcookiesSTR[i].getValue();
                                        }                
                 ResultSet rsuser = userstatement.executeQuery("SELECT * from user WHERE username='" + username + "'");
                 rsuser.first();

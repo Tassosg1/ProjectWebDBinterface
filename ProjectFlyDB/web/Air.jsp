@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>Fly Me To The Moon - Airplane Booking</title>
-		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
