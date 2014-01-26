@@ -27,9 +27,9 @@
 <%@ include file="Includes/popuplogin.jsp" %>
 <div id="container">
 <%@ include file="cred/DBConnectCrede.jsp" %>
-<%      
-        Statement airportsstatement = DBCon.createStatement();
-        ResultSet rsairport = airportsstatement.executeQuery("SELECT * from port");
+<%
+	Statement airportsstatement = DBCon.createStatement();
+	ResultSet rsairport = airportsstatement.executeQuery("SELECT * from port");
 	rsairport.last();int size = rsairport.getRow();rsairport.first();
 	String[] airports = new String[size];
 	if (rsairport.first())
@@ -37,25 +37,29 @@
 	airports[0] =  rsairport.getString("country") + ", " + rsairport.getString("airport");
 	for(int i = 1; rsairport.next(); i++ ) 
 		airports[i] =  rsairport.getString("country") + ", " + rsairport.getString("airport");
-	}%>
-                <form method="get" action ="results.jsp">
-				<label for="to_air">Location : </label>
-                <select name="to_air" id="to_air">
-                <%
-                for (int i = 0;i < airports.length;i++)
-                    out.println("<option value=\"" + airports[i] + "\"> " + airports[i] + "</option>");
-                %>
-                </select>
-				<h1>From</h1>
-				<label for="from_date">Date</label>
-				<input type="text" id="from_date" />
-				<br />
-				<h1>To</h1>
-				<label for="to_date">Date</label>
-				<input type="text" id="to_date" />
-				<input type="submit" value="Search!">
-                </form>
-			</div>
+	}
+	%>
+	<form method="get" action ="results.jsp">
+	<label for="to_air">Location : </label>
+	<select name="to_air" id="to_air">
+	<%
+	for (int i = 0;i < airports.length;i++)
+		out.println("<option value=\"" + airports[i] + "\"> " + airports[i] + "</option>");
+	%>
+	</select>
+	<span id ="to" class="Left">
+		<h1>From</h1>
+		<label for="from_date">Date : </label>
+		<input type="text" id="from_date" />
+	</span>
+	<span id ="to" class="Right">
+		<h1>To</h1>
+		<label for="to_date">Date : </label>
+		<input type="text" id="to_date" />
+	</span>
+	<input type="submit" value="Search!">
+    </form>
+</div>
 <%@ include file="Includes/Footer.jsp" %>
-	</body>
+</body>
 </html>

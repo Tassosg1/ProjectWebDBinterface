@@ -50,7 +50,7 @@
                 %>   
                 </select>
 				<br />
-				<label for="from_date">Date</label>
+				<label for="from_date">Date : </label>
 				<input type="text" id="from_date" />
 				</span>
 				<span id ="to" class="Right">
@@ -63,7 +63,7 @@
                 %>   
                 </select>
 				<br />
-				<label for="to_date">Date</label>
+				<label for="to_date">Date : </label>
 				<input type="text" id="to_date" />
 				</span>
 				<input type="submit" value="Search!">

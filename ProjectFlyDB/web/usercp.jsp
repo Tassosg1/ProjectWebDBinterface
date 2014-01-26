@@ -33,9 +33,6 @@
 <div id="container">
 <h3><b><center>This is your control panel.<BR>From here you can change your data, or cancel your flights.</center></b></h3>
                 <%
-                Statement userstatement = DBCon.createStatement();
-                Statement ccstatement = DBCon.createStatement();
-                Statement flightstatement = DBCon.createStatement();               
                 ResultSet rsuser = userstatement.executeQuery("SELECT * from user WHERE username='" + username + "'");
                 rsuser.first();
                 out.println("<form method=\"get\" action=\"changesth.jsp\"><BR><BR>");

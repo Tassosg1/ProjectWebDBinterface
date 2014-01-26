@@ -38,11 +38,12 @@
 	for(int i = 1; rsairport.next(); i++ ) 
 		airports[i] =  rsairport.getString("country") + ", " + rsairport.getString("airport");
 	}%>
+	
                 <form method="get" action ="results.jsp">
-                    <input type="hidden" name ="service" value="fly">
+                <input type="hidden" name ="service" value="fly">
 				<span id="from" class="Left">
 				<h1>From</h1>
-				<label for="from_air">Airport :</label>
+				<label for="from_air">Airport : </label>
                 <select name="from_air" id="from_air">
                 <%
                 for (int i = 0;i < airports.length;i++)
@@ -50,8 +51,8 @@
                 %>   
                 </select>
 				<br />
-				<label for="from_date">Date</label>
-				<input type="text" name="date" id="from_date" />
+				<label for="from_date">Date : </label>
+				<input type="text" required="required" name="date" id="from_date" />
 				</span>
 				<span id ="to" class="Right">
 				<h1>To</h1>
@@ -63,7 +64,7 @@
                 %>   
                 </select>
 				<br />
-				<label for="to_date">Date</label>
+				<label for="to_date">Date : </label>
 				<input type="text" id="to_date" />
 				</span>
 				<input type="submit" value="Search!">

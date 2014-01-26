@@ -1,7 +1,8 @@
 /*element positioning*/
 .Left,.Center,.Right
 {
-    padding: 0% 0.5%;
+	padding: 0% 0.5%;
+	clear: right;
 }
 
 .Left

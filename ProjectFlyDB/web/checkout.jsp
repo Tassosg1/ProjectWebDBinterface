@@ -19,6 +19,7 @@
 </head>
 <body onload="javascript:check('username');">
 <%@ include file="Includes/Header.jsp" %>
+<%@ include file="Includes/popuplogin.jsp" %>
 <%@ include file="cred/DBConnectCrede.jsp" %>
 <%
                  Statement search = DBCon.createStatement();
@@ -55,10 +56,6 @@
                   }
                     if(hasCC==1) out.println("<input type=\"submit\" title=\"Procceed to CC Verification.\" value=\"Pay " + rsfly.getInt("cost") + "E using this credit card.\">");
                     %>
-        
-		<footer>
-			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>
-		</footer>
-
+<%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>

@@ -1,7 +1,7 @@
 <%@page import="java.sql.*"%>
 <html>
 	<head>
-		<title>Fly Me To The Moon - Index</title>
+		<title>Fly Me To The Moon - Home</title>
 		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon" />
 		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
@@ -43,7 +43,7 @@
                 <input type="hidden" name ="service" value="fly">
 				<span id="from" class="Left">
 				<h1>From</h1>
-				<label for="from_air">Airport :</label>
+				<label for="from_air">Airport : </label>
                 <select name="from_air" title="The airport you want to fly from." id="from_air">
                 <%
                 for (int i = 0;i < airports.length;i++)
@@ -51,8 +51,8 @@
                 %>   
                 </select>
 				<br />
-				<label for="from_date">Date</label>
-                                <input type="text" title="The date you want to fly.&#013;If you want results for a range of dates, also fill the 'to' date field." required="required" name="date" id="from_date" />
+				<label for="from_date">Date : </label>
+				<input type="text" title="The date you want to fly.&#013;If you want results for a range of dates, also fill the 'to' date field." required="required" name="date" id="from_date" />
 				</span>
 				<span id ="to" class="Right">
 				<h1>To</h1>
@@ -64,12 +64,12 @@
                 %>   
                 </select>
 				<br />
-				<label for="to_date">Date</label>
-				<input type="text" title="Fill this field in case you want to&#013;search for a range of dates." title="The airport you want to fly to." id="to_date" />
+				<label for="to_date">Date : </label>
+				<input type="text" title="Fill this field in case you want to&#013;search for a range of dates." id="to_date" />
 				</span>
-                <input type="submit" title="Search for a flight matching your criteria." value="Search!">
+				<input class="Center" title="Search for a flight matching your criteria." type="submit" value="Search!">
                 </form>
 			</div>
-<%@ include file="Includes/Footer.jsp" %>
+	<%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>
