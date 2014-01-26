@@ -31,7 +31,7 @@
                 -->
 <%@ include file="cred/DBConnectCrede.jsp" %>  
 <div id="container">
-<h3><b><center>This is your control panel. From here you can change your data, or cancel your flights.</center></b></h3>
+<h3><b><center>This is your control panel.<BR>From here you can change your data, or cancel your flights.</center></b></h3>
                 <%
                 Statement userstatement = DBCon.createStatement();
                 Statement ccstatement = DBCon.createStatement();

@@ -16,7 +16,7 @@
         <script src="Scripts/login.js"></script>
         <script src="Scripts/logout.js"></script>
     </head>
-    <body background="./Resources/back.jpg">
+    <body>
         <%@ include file="Includes/Header.jsp" %>
         <%@ include file="Includes/popuplogin.jsp" %>
         <div id="container">
@@ -100,7 +100,7 @@
                 } else
                     out.println("<h1> No flights were found. <BR> Try changing your search criteria.</h1>");
                 if (isNotEmpty == 1) {
-                    out.println("<input type=\"submit\" value=\"Continue\">");
+                    out.println("<input type=\"submit\" title=\"Procceed to Checkout.\" value=\"Continue\">");
                 }
                 %>
             </form>

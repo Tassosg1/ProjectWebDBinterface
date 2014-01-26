@@ -3,7 +3,7 @@ body
 /*template styles*/
 	color: black;
 	text-shadow: 2px 2px 2px #2B2B2B;
-	text-transform:capitalize;
+	text-transform: none;
 	text-align: center;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-size: 100%;
