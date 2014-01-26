@@ -44,7 +44,7 @@
 				<span id="from" class="Left">
 				<h1>From</h1>
 				<label for="from_air">Airport : </label>
-                <select name="from_air" id="from_air">
+                <select name="from_air" title="The airport you want to fly from." id="from_air">
                 <%
                 for (int i = 0;i < airports.length;i++)
                     out.println("<option value=\"" + airports[i] + "\"> " + airports[i] + "</option>");
@@ -52,12 +52,12 @@
                 </select>
 				<br />
 				<label for="from_date">Date : </label>
-				<input type="text" required="required" name="date" id="from_date" />
+				<input type="text" title="The date you want to fly.&#013;If you want results for a range of dates, also fill the 'to' date field." required="required" name="date" id="from_date" />
 				</span>
 				<span id ="to" class="Right">
 				<h1>To</h1>
                 <label for="to_air">Airport : </label>
-                <select name="to_air" id="to_air">
+                <select name="to_air" title="The airport you want to fly to." id="to_air">
                 <%
                 for (int i = 0;i < airports.length;i++)
                     out.println("<option value=\"" + airports[i] + "\"> " + airports[i] + "</option>");
@@ -65,9 +65,9 @@
                 </select>
 				<br />
 				<label for="to_date">Date : </label>
-				<input type="text" id="to_date" />
+				<input type="text" title="Fill this field in case you want to&#013;search for a range of dates." id="to_date" />
 				</span>
-				<input class="Center" type="submit" value="Search!">
+				<input class="Center" title="Search for a flight matching your criteria." type="submit" value="Search!">
                 </form>
 			</div>
 	<%@ include file="Includes/Footer.jsp" %>

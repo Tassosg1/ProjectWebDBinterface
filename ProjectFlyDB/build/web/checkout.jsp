@@ -53,7 +53,7 @@
                       }
                     }
                   }
-                    if(hasCC==1) out.println("<input type=\"submit\" value=\"Pay " + rsfly.getInt("cost") + "E using this credit card.\">");
+                    if(hasCC==1) out.println("<input type=\"submit\" title=\"Procceed to CC Verification.\" value=\"Pay " + rsfly.getInt("cost") + "E using this credit card.\">");
                     %>
         
 		<footer>

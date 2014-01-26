@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
         <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
+<<<<<<< HEAD
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/MainContent.css" />
 		<meta name="description" content="" />
 		<meta name="author" content="OpenSource @ https://github.com/Tassosg1/ProjectWebDBinterface" />
@@ -86,7 +87,7 @@
 									out.println("<h1> No flights were found. Try changing your search criteria.</h1>");
                                 if(isNotEmpty==1)
 								{
-									out.println("<input class=\"Center\" type=\"submit\" value=\"Continue\">");
+									out.println("<input class=\"Center\"  title=\"Procceed to Checkout.\" type=\"submit\" value=\"Continue\">");
                                 }
 								%>
 								</form>
