@@ -18,15 +18,16 @@
 		<script src="Scripts/logout.js"></script>
 </head>
 <body onload="javascript:timedRedirect();">
+<%@ include file="./Includes/Header.jsp" %>
 <%@ include file="cred/DBConnectCrede.jsp" %>
 				<%
                  Statement removestatement = DBCon.createStatement();
                  if (request.getParameter("flight") != null) {
-                 out.println("Your flight has been deleted. You will be redirected soon.");
+                 out.println("<BR><BR>Your flight has been deleted. You will be redirected soon.");
                  removestatement.executeUpdate("DELETE FROM bookings WHERE username='" + username + "' AND id=" + request.getParameter("flight") + " AND seat=" + request.getParameter("seat"));
                  } else if (request.getParameter("ccnum") != null) {
                  removestatement.executeUpdate("DELETE FROM cc WHERE username='" + username + "' AND ccnum='" + request.getParameter("ccnum") + "'");
-                 out.println("Your CC is being deleted");
+                 out.println("<BR><BR>Your CC is being deleted");
                  }
 
                  

@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"  >
 	<head>
 		<title>Fly Me To The Moon - Success !</title>
 		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon" />
@@ -18,10 +19,11 @@
 <body>
 <%@ include file="Includes/Header.jsp" %>
 <%@ include file="Includes/popuplogin.jsp" %>
-                <BR><BR>
-		Your booking was successful.
-                     
-                <%out.println(request.getParameter("destination"));%>
-<%@ include file="Includes/Footer.jsp" %>
+		<br><br>
+			<h3>Your booking was successful</h3><img src="./Resources/success.png" alt="Success" width="50" height="50">
+			<br><br><br><br><br><br><br><br><br>
+		<a href="http://en.wikipedia.org/wiki/<%out.println(request.getParameter("destination"));%>" class="yoloright">Information</a>
+		<a href="https://www.google.gr/?gws_rd=cr&ei=3_XSUtulK4mRtQa_84GgAw#q=weather+<%out.println(request.getParameter("destination"));%>" class="yoloright">Weather</a>
+		<%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>

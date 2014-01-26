@@ -49,7 +49,9 @@
                       out.println(rscc.getString("ccnum"));
                       out.println("<input type=\"hidden\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
                       out.println("<input type=\"radio\" required=\"required\" name=\"ccnum\" value=\"" + rscc.getString("ccnum") + "\"><BR>");
-                      rscc.next();
+                      if(!rscc.next()) {
+                      break;   
+                      }
                     }
                   }
                     if(hasCC==1) out.println("<input type=\"submit\" value=\"Pay " + rsfly.getInt("cost") + "E using this credit card.\">");

@@ -102,5 +102,4 @@
 %>
 </div>
 <%@ include file="Includes/Footer.jsp" %>
-	</body>
 </html>

@@ -4,7 +4,7 @@
 		<center><input name="username" size="14" /></center>
 		<center>Password:</center>
 		<center><input name="password" type="password" size="14" /></center>
-		<center><input type="submit" name="submit" value="login" /></center>
+		<center><input type="submit" name="submit" value="Login" /></center>
 	</form>
 	<center><a href="javascript:login('hide');">Close</a></center> 
 </div>

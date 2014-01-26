@@ -17,6 +17,7 @@
 		<script src="Scripts/logout.js"></script>
 </head>
 <%@ include file="cred/DBConnectCrede.jsp" %>
+<%@ include file="Includes/Header.jsp" %>
 			<%
             //FIRST WE CHECK FOR THE CCVER NUMBER
             Statement cc = DBCon.createStatement();

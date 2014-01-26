@@ -1,39 +1,29 @@
 <%@page import="java.sql.*"%>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en"  >
-
+<html>
 	<head>
-        <title>Fly Me To The Moon - Verifying</title>
-                <link rel="stylesheet" type="text/css" href="./StyleSheets/generic.css" />
+		<title>Fly Me To The Moon - Verifycation in progress</title>
+		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
-                <!-- PLEASE mind the case-sensitivity (Glassfish©). Use the format recommended ^ -->
-                <!--<link rel="stylesheet" type="text/css" href="Stylesheets/index.css" />-->
+		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
+        <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
+		<link rel="stylesheet" type="text/css" href="./StyleSheets/MainContent.css" />
 		<meta name="description" content="" />
 		<meta name="author" content="OpenSource @ https://github.com/Tassosg1/ProjectWebDBinterface" />
 		<meta name="robots" content="noindex, nofollow" />
 		<meta charset="utf-8" />
-    </head>
-
-<script type="text/JavaScript">
-function timedRedirect() {
-	setTimeout("window.location=\"index.jsp\";",4000);
-}
-</script>
-    
-    <body onload="javascript:timedRedirect();">
-
-		<header>
-			<nav>
-				<span class="Left"><a href="index.jsp">Home</a></span>
-			</nav>
-		</header>
+		<script src="Scripts/login.js"></script>
+		<script src="Scripts/logout.js"></script>
+		<script src="Scripts/timedRedirect.js"></script>
+</head>
+<body onload="javascript:timedRedirect();">
+<%@ include file="Includes/Header.jsp" %>
 <BR>
 <BR>		
+<%@ include file="cred/DBConnectCrede.jsp" %>
                 <%
-                 Class.forName("com.mysql.jdbc.Driver");
-                 String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                 Connection DBCon = DriverManager.getConnection(DBConStr);
-                 Statement userstatement = DBCon.createStatement();
+		 Statement userstatement = DBCon.createStatement();
                  ResultSet rsuser = userstatement.executeQuery("SELECT * from user WHERE username='" + request.getParameter("username") + "'");
                  if(rsuser.first()) {
                      if (request.getParameter("password").equals(rsuser.getString("password"))) {
@@ -44,10 +34,6 @@ function timedRedirect() {
                      out.println("This user ("+request.getParameter("username")+") does not exist.<BR> Please try again or contact the admin.");
                  }
                 %>
-        
-		<footer>
-			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>
-		</footer>
-
+<%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>

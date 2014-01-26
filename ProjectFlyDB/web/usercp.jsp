@@ -29,20 +29,10 @@
                      From there on, several java functions (.first(),.next()) help you manage the results, and functions like (rsairport.getString("airport") to access them.
                      
                 -->
-                <BR><BR><BR>
-                <center>This is your control panel. From here you can change your data, or cancel your flights.
-                <HR>
 <%@ include file="cred/DBConnectCrede.jsp" %>  
+<div id="container">
+<h3><b><center>This is your control panel. From here you can change your data, or cancel your flights.</center></b></h3>
                 <%
-                 Statement userstatement = DBCon.createStatement();
-                 Statement ccstatement = DBCon.createStatement();
-                 Statement flightstatement = DBCon.createStatement();
-                 String username = "";
-                 Cookie allcookiesSTR[] = {}; if(request.getCookies() != null) allcookiesSTR = request.getCookies();
-                  for (int i = 0;i < allcookiesSTR.length;i++)
-                      if (allcookiesSTR[i].getName().equals("username")) {
-                            username = allcookiesSTR[i].getValue();
-                                       }                
                 ResultSet rsuser = userstatement.executeQuery("SELECT * from user WHERE username='" + username + "'");
                 rsuser.first();
                 out.println("<form method=\"get\" action=\"changesth.jsp\"><BR><BR>");
@@ -54,10 +44,12 @@
                 
                 out.println("<input type=\"submit\" value=\"Update!\">");
                 out.println("</form><BR><BR> ");
-                
-                
-                
-                out.println("<h2>Credit Cards: </h2> <form name=cc ");
+                %>
+</div>
+
+<div id="container">
+                <%
+                out.println("<h2>Credit Cards: </h2>");
                 ResultSet cc = ccstatement.executeQuery("SELECT * FROM cc WHERE username='" + username + "'");
                 
                 while(cc.next()) {
@@ -70,8 +62,11 @@
                 out.println("Add a new credit card:<BR><BR>");
                 out.println("<form action=\"addsth.jsp\"> <input name=\"ccnum\" type=\"number\" min=\"1111111111111111\" max=\"9999999999999999\" value=\"1111222233334444\"> - "
                         + "<input type=\"number\" name=\"ccver\" size=\"3\" min=\"0\" max=\"999\" value=\"123\"><input type=\"submit\" value=\"Add\"></form><BR><BR>");
-                
-                
+                %>
+</div>
+
+<div id="container">
+				<%
                 out.println("<HR><h2> My Flights </h2><BR>");
                 ResultSet flights = flightstatement.executeQuery("SELECT * from bookings WHERE username='" + username + "'");
                 if(!flights.first()) out.println("You haven't booked any flights.");
@@ -89,6 +84,7 @@
                 }
                 
                 %>
+</div>
 <%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>

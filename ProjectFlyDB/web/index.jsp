@@ -7,7 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
-        <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
+                <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/MainContent.css" />
 		<!--External-->
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
@@ -70,6 +70,6 @@
 				<input class="Center" type="submit" value="Search!">
                 </form>
 			</div>
-<%@ include file="Includes/Footer.jsp" %>
+	<%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>
