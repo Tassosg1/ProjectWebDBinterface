@@ -18,8 +18,8 @@
 		<script src="Scripts/logout.js"></script>
 </head>
 <body onload="javascript:check('username');">
-<%@ include file="Header.jsp" %>
-<%@ include file="popuplogin.jsp" %>
+<%@ include file="Includes/Header.jsp" %>
+<%@ include file="Includes/popuplogin.jsp" %>
 <%@ include file="cred/DBConnectCrede.jsp" %>
 <%
                  Statement search = DBCon.createStatement();
@@ -54,10 +54,6 @@
                   }
                     if(hasCC==1) out.println("<input type=\"submit\" value=\"Pay " + rsfly.getInt("cost") + "E using this credit card.\">");
                     %>
-        
-		<footer>
-			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>
-		</footer>
-
+<%@ include file="Includes/Footer.jsp" %>
 	</body>
 </html>
