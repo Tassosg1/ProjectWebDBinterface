@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>Fly Me To The Moon - Checkout</title>
-		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
@@ -18,8 +18,7 @@
 		<script src="Scripts/logout.js"></script>
 </head>
 <body onload="javascript:check('username');">
-<%@ include file="Header.jsp" %>
-<%@ include file="popuplogin.jsp" %>
+<%@ include file="Includes/Header.jsp" %>
 <%@ include file="cred/DBConnectCrede.jsp" %>
 <%
                  Statement search = DBCon.createStatement();
@@ -49,7 +48,9 @@
                       out.println(rscc.getString("ccnum"));
                       out.println("<input type=\"hidden\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
                       out.println("<input type=\"radio\" required=\"required\" name=\"ccnum\" value=\"" + rscc.getString("ccnum") + "\"><BR>");
-                      rscc.next();
+                      if(!rscc.next()) {
+                      break;   
+                      }
                     }
                   }
                     if(hasCC==1) out.println("<input type=\"submit\" value=\"Pay " + rsfly.getInt("cost") + "E using this credit card.\">");

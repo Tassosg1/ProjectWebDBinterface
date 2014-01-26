@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<title>Fly Me To The Moon - Index</title>
-		<link rel="shortcut icon" href="Resources/favicon.ico" />
-		<link rel="icon" href="Resources/favicon.ico" />
+		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
-        <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
+                <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/MainContent.css" />
 		<!--External-->
 		<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
@@ -52,7 +52,7 @@
                 </select>
 				<br />
 				<label for="from_date">Date</label>
-				<input type="text" name="date" id="from_date" />
+				<input type="text" required="required" name="date" id="from_date" />
 				</span>
 				<span id ="to" class="Right">
 				<h1>To</h1>

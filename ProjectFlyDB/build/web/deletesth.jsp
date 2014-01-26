@@ -1,46 +1,33 @@
-<%-- 
-    Document   : addsth
-    Created on : Dec 22, 2013, 2:04:59 AM
-    Author     : StormRider
---%>
 <%@page import="java.sql.*"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Deleting. Please wait...</title>
-    </head>
-    <script type="text/JavaScript">
-        function timedRedirect() {
-            setTimeout("window.location=\"usercp.jsp\";",4000);
-        }
-    </script>
-    
-    <body onload="javascript:timedRedirect();">
-        <%
-                Cookie allcookies[] = {};
-                if (request.getCookies() != null) {
-                allcookies = request.getCookies();
-                }
-                String username = null;
-                for (int i = 0; i < allcookies.length; i++) {
-                     if (allcookies[i].getName().equals("username")) {
-                            username = allcookies[i].getValue();
-                    }
-                }
-            
-                 Class.forName("com.mysql.jdbc.Driver");
-                 String DBConStr = "jdbc:mysql://localhost:3306/flydb?user=root&password=";
-                 Connection DBCon = DriverManager.getConnection(DBConStr);
+	<head>
+		<title>Deleting ... Please Wait.</title>
+		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
+		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
+		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
+        <link rel="stylesheet" type="text/css" href="./StyleSheets/popupbox.css" />
+		<link rel="stylesheet" type="text/css" href="./StyleSheets/MainContent.css" />
+		<meta name="description" content="" />
+		<meta name="author" content="OpenSource @ https://github.com/Tassosg1/ProjectWebDBinterface" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta charset="utf-8" />
+		<script src="Scripts/login.js"></script>
+		<script src="Scripts/timedRedirect.js"></script>
+		<script src="Scripts/logout.js"></script>
+</head>
+<body onload="javascript:timedRedirect();">
+<%@ include file="./Includes/Header.jsp" %>
+<%@ include file="cred/DBConnectCrede.jsp" %>
+				<%
                  Statement removestatement = DBCon.createStatement();
-                 
                  if (request.getParameter("flight") != null) {
-                 out.println("Your flight has been deleted. You will be redirected soon.");
+                 out.println("<BR><BR>Your flight has been deleted. You will be redirected soon.");
                  removestatement.executeUpdate("DELETE FROM bookings WHERE username='" + username + "' AND id=" + request.getParameter("flight") + " AND seat=" + request.getParameter("seat"));
                  } else if (request.getParameter("ccnum") != null) {
                  removestatement.executeUpdate("DELETE FROM cc WHERE username='" + username + "' AND ccnum='" + request.getParameter("ccnum") + "'");
-                 out.println("Your CC is being deleted");
+                 out.println("<BR><BR>Your CC is being deleted");
                  }
 
                  

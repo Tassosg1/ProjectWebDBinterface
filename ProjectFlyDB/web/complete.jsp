@@ -2,8 +2,8 @@
 <html>
 	<head>
 		<title>Fly Me To The Moon - Completed</title>
-		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" href="Resources/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="Resources/favicon.ico" type="image/x-icon" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
@@ -17,6 +17,7 @@
 		<script src="Scripts/logout.js"></script>
 </head>
 <%@ include file="cred/DBConnectCrede.jsp" %>
+<%@ include file="Includes/Header.jsp" %>
 			<%
             //FIRST WE CHECK FOR THE CCVER NUMBER
             Statement cc = DBCon.createStatement();

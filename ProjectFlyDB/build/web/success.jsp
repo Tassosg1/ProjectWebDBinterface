@@ -3,7 +3,7 @@
 
 	<head>
         <title>Fly Me To The Moon - Success!</title>
-		<link rel="stylesheet" type="text/css" href="./StyleSheets/generic.css" />
+		<link rel="stylesheet" type="text/css" href="./StyleSheets/Generic.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/HeaderFooter.css" />
 		<link rel="stylesheet" type="text/css" href="./StyleSheets/Class.css" />
                 <!-- PLEASE mind the case-sensitivity (Glassfish©). Use the format recommended ^ -->
@@ -36,13 +36,18 @@
                                     out.println("<span class=\"Right\">Welcome <a href=\"usercp.jsp\">" + allcookies[i].getValue() + "! </a>");
                                     out.println("<a href=\"javascript:logout();\">Logout</a></span>"); }
                                 %>
-				
 			</nav>
 		</header>
-                <BR><BR><BR>
-		Your booking was successful.
-                     
-                <%out.println(request.getParameter("destination"));%>
+		
+		
+		<br><br>
+			<h3>Your booking was successful</h3><img src="./Resources/success.png" alt="Success" width="50" height="50">
+			<br><br><br><br><br><br><br><br><br>
+		<a href="http://en.wikipedia.org/wiki/<%out.println(request.getParameter("destination"));%>" class="yoloright">Information</a>
+		<a href="https://www.google.gr/?gws_rd=cr&ei=3_XSUtulK4mRtQa_84GgAw#q=weather+<%out.println(request.getParameter("destination"));%>" class="yoloright">Weather</a>
+
+  
+  
 		<footer>
 			<span class="Right"><a href="https://github.com/Tassosg1/ProjectWebDBinterface" rel="author">Source</a></span>
 		</footer>
