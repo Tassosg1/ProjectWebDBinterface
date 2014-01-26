@@ -60,9 +60,8 @@
                                     LeftOrRight=1;
 									while (true)
 									{
-									LeftOrRight++;
 									%>
-									<span class="<% if((LeftOrRight%2)==0) out.println("Left"); else out.println("Right"); %>" >
+									<span class="<% if((LeftOrRight%2)==1) out.println("Left"); else out.println("Right"); %>" >
 									<%
 										out.println("<h1>Flight : #" + rsfly.getInt("id") + ":</h1>");
 										out.println("Departure Airport : " + rsfly.getString("from_port") + "<br />");
@@ -73,11 +72,13 @@
 										ResultSet rsprovider = provider.executeQuery("SELECT name FROM flightcom WHERE vat=" + rsfly.getInt("vat"));
 										rsprovider.first();
 										out.println("Flight provided by : " + rsprovider.getString("name") + "<br />");
-										if (rsfly.getInt("seats") == 0) {out.println("There are no seats left on this flight.");continue;}
-										out.println("<input type=\"radio\" required=\"required\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
+										if (rsfly.getInt("seats") == 0) out.println("There are no seats left on this flight.");
+										else out.println("<input type=\"radio\" required=\"required\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
 										%>
 										</span>
 										<%
+										if ((LeftOrRight%2)==1) out.println("<br />");
+										LeftOrRight++;
 										if(!rsfly.next())break;
 									}
                                 }
@@ -85,7 +86,7 @@
 									out.println("<h1> No flights were found. Try changing your search criteria.</h1>");
                                 if(isNotEmpty==1)
 								{
-									out.println("<input type=\"submit\" value=\"Continue\">");
+									out.println("<input class=\"Center\" type=\"submit\" value=\"Continue\">");
                                 }
 								%>
 								</form>

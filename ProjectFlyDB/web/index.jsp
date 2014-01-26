@@ -67,7 +67,7 @@
 				<label for="to_date">Date : </label>
 				<input type="text" id="to_date" />
 				</span>
-				<input type="submit" value="Search!">
+				<input class="Center" type="submit" value="Search!">
                 </form>
 			</div>
 <%@ include file="Includes/Footer.jsp" %>
