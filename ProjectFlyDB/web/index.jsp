@@ -63,6 +63,7 @@
 				</span>
 				<label for="from_date">Date : </label>
 				<input type="text" title="The date you want to fly.&#013;If you want results for a range of dates, also fill the 'to' date field." required="required" name="date" id="from_date" />
+				<br />
 				<input class="Center" title="Search for a flight matching your criteria." type="submit" value="Search!">
                 </form>
 			</div>
