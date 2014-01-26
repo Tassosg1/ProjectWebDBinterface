@@ -2,7 +2,7 @@ body
 {
 /*template styles*/
 	color: black;
-	text-shadow: 2px 2px 2px gray;
+	text-shadow: 2px 2px 2px #2B2B2B;
 	text-transform:capitalize;
 	text-align: center;
 	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;

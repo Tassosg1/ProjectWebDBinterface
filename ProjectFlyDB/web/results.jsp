@@ -62,34 +62,35 @@
 									{
 									LeftOrRight++;
 									%>
-									<span class="<% if((LeftOrRight%2)==1) out.println("Left"); else out.println("Right"); %>" >
+									<span class="<% if((LeftOrRight%2)==0) out.println("Left"); else out.println("Right"); %>" >
 									<%
 										out.println("<h1>Flight : #" + rsfly.getInt("id") + ":</h1>");
 										out.println("Departure Airport: " + rsfly.getString("from_port") + "<br />");
 										out.println("Arrival Airport: " + rsfly.getString("to_port") + "<br />");
 										out.println("Time of Departure: " + rsfly.getString("datetime") + "<br />");
 										out.println("Available Seats: " + rsfly.getInt("seats") + "<br />");
-										out.println("Total cost is : " + rsfly.getInt("cost") + "€ <br />");
+										out.println("Total cost is : " + rsfly.getInt("cost") + "<br />");
 										ResultSet rsprovider = provider.executeQuery("SELECT name FROM flightcom WHERE vat=" + rsfly.getInt("vat"));
 										rsprovider.first();
 										out.println("Flight provided by : " + rsprovider.getString("name") + "<br />");
 										if (rsfly.getInt("seats") == 0) {out.println("There are no seats left on this flight.");continue;}
 										out.println("<input type=\"radio\" required=\"required\" name=\"flight\" value=\"" + rsfly.getInt("id") + "\">");
+										%>
+										</span>
+										<%
 										if(!rsfly.next())break;
 									}
-									%>
-									</span>
-									<%
                                 }
 								else
-								out.println("<h1> No flights were found. Try changing your search criteria.</h1>");
-                                if(isNotEmpty==1) {
-                                out.println("<input type=\"submit\" value=\"Continue\">");\
+									out.println("<h1> No flights were found. Try changing your search criteria.</h1>");
+                                if(isNotEmpty==1)
+								{
+									out.println("<input type=\"submit\" value=\"Continue\">");
                                 }
-								break;
 								%>
 								</form>
 								<%
+								break;
                      case 2:
                          //Implement car results
                                 break;
